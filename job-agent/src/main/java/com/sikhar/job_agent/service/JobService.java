@@ -1,0 +1,25 @@
+package com.sikhar.job_agent.service;
+
+import com.sikhar.job_agent.model.Job;
+import com.sikhar.job_agent.repository.JobRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+@Service
+@RequiredArgsConstructor
+public class JobService {
+
+    private final JobRepository jobRepository;
+
+    public Job saveJob(Job job) {
+        job.setCreatedAt(LocalDateTime.now());
+        return jobRepository.save(job);
+    }
+
+    public List<Job> getAllJobs() {
+        return jobRepository.findAll();
+    }
+}
