@@ -4,6 +4,7 @@ import com.sikhar.job_agent.model.Job;
 import com.sikhar.job_agent.repository.JobRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import java.util.Optional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -21,5 +22,8 @@ public class JobService {
 
     public List<Job> getAllJobs() {
         return jobRepository.findAll();
+    }
+    public Optional<Job> getJobById(Long id) {
+        return jobRepository.findById(id);
     }
 }
