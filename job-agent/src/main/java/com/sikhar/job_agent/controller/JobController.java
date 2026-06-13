@@ -3,6 +3,7 @@ package com.sikhar.job_agent.controller;
 import com.sikhar.job_agent.model.Job;
 import com.sikhar.job_agent.service.GroqService;
 import com.sikhar.job_agent.service.JobService;
+import com.sikhar.job_agent.service.ScraperService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,7 @@ public class JobController {
 
     private final JobService jobService;
     private final GroqService groqService;
+    private final ScraperService scraperService;
 
     @PostMapping
     public ResponseEntity<Job> createJob(@RequestBody Job job) {
@@ -34,5 +36,12 @@ public class JobController {
                 ))
                 .orElse(ResponseEntity.notFound().build());
     }
+
+    @PostMapping("/scrape")
+    public ResponseEntity<String> triggerScrape() {
+        List<Job> jobs = scraperService.scrapeNow();
+        return ResponseEntity.ok("Scraped and saved " + jobs.size() + " jobs!");
+    }
+
 
 }
