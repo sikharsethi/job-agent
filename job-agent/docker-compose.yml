@@ -2,7 +2,7 @@
 
 services:
   postgres:
-    image: postgres:latest
+    image: postgres:16
     container_name: job-agent-db
     environment:
       POSTGRES_DB: jobagentdb
