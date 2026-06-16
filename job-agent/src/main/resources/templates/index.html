@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Job Agent AI</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; color: #333; }
+
+        .navbar { background: #1a1a2e; color: white; padding: 16px 32px; display: flex; align-items: center; justify-content: space-between; }
+        .navbar h1 { font-size: 22px; font-weight: 600; }
+        .navbar span { background: #e94560; padding: 4px 12px; border-radius: 20px; font-size: 13px; }
+
+        .container { max-width: 1200px; margin: 32px auto; padding: 0 24px; }
+
+        .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 32px; }
+        .stat-card { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .stat-card h3 { font-size: 13px; color: #888; margin-bottom: 8px; text-transform: uppercase; }
+        .stat-card p { font-size: 32px; font-weight: 700; color: #1a1a2e; }
+
+        .actions { display: flex; gap: 12px; margin-bottom: 32px; }
+        .btn { padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 500; }
+        .btn-primary { background: #e94560; color: white; }
+        .btn-primary:hover { background: #c73652; }
+
+        .jobs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 20px; }
+        .job-card { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .job-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; color: #1a1a2e; }
+        .job-card .company { color: #e94560; font-size: 14px; margin-bottom: 8px; }
+        .job-card .location { color: #888; font-size: 13px; margin-bottom: 12px; }
+        .job-card .desc { font-size: 13px; color: #555; line-height: 1.6; margin-bottom: 16px;
+                          display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+        .job-card .btn-cover { background: #1a1a2e; color: white; padding: 8px 16px;
+                                border: none; border-radius: 6px; cursor: pointer; font-size: 13px; }
+        .badge { display: inline-block; background: #e8f5e9; color: #2e7d32;
+                 padding: 3px 10px; border-radius: 20px; font-size: 11px; margin-bottom: 12px; }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <h1>🤖 Job Agent AI</h1>
+    <span>Powered by job AI</span>
+</nav>
+
+<div class="container">
+    <div class="stats">
+        <div class="stat-card">
+            <h3>Total Jobs Found</h3>
+            <p th:text="${totalJobs}">0</p>
+        </div>
+        <div class="stat-card">
+            <h3>Companies</h3>
+            <p th:text="${totalCompanies}">0</p>
+        </div>
+        <div class="stat-card">
+            <h3>AI Ready</h3>
+            <p>✅</p>
+        </div>
+    </div>
+
+    <div class="actions">
+        <form th:action="@{/scrape}" method="post">
+            <button class="btn btn-primary" type="submit">🔍 Scrape New Jobs</button>
+        </form>
+    </div>
+
+    <div class="jobs-grid">
+        <div class="job-card" th:each="job : ${jobs}">
+            <span class="badge" th:text="${job.status}">NEW</span>
+            <h3 th:text="${job.title}">Job Title</h3>
+            <div class="company" th:text="${job.company}">Company</div>
+            <div class="location">📍 <span th:text="${job.location}">Location</span></div>
+            <div class="desc" th:text="${job.description}">Description</div>
+            <form th:action="@{/cover-letter/{id}(id=${job.id})}" method="post">
+                <a th:href="@{/cover-letter/{id}(id=${job.id})}" class="btn-cover">✨ Generate Cover Letter</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

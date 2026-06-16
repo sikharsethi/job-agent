@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cover Letter - Job Agent AI</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f0f2f5; color: #333; }
+
+        .navbar { background: #1a1a2e; color: white; padding: 16px 32px; display: flex; align-items: center; justify-content: space-between; }
+        .navbar h1 { font-size: 22px; font-weight: 600; }
+        .navbar a { color: white; text-decoration: none; font-size: 14px; }
+
+        .container { max-width: 800px; margin: 40px auto; padding: 0 24px; }
+
+        .job-info { background: white; border-radius: 12px; padding: 24px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .job-info h2 { font-size: 22px; color: #1a1a2e; margin-bottom: 6px; }
+        .job-info .company { color: #e94560; font-size: 16px; margin-bottom: 4px; }
+        .job-info .location { color: #888; font-size: 14px; }
+
+        .cover-letter-box { background: white; border-radius: 12px; padding: 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .cover-letter-box h3 { font-size: 16px; color: #888; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 0.05em; }
+        .cover-letter-text { font-size: 15px; line-height: 1.8; color: #333; white-space: pre-wrap; }
+
+        .actions { display: flex; gap: 12px; margin-top: 24px; }
+        .btn { padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 500; text-decoration: none; display: inline-block; }
+        .btn-back { background: #1a1a2e; color: white; }
+        .btn-copy { background: #e94560; color: white; }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <h1>🤖 Job Agent AI</h1>
+    <a href="/">← Back to Jobs</a>
+</nav>
+
+<div class="container">
+    <div class="job-info">
+        <h2 th:text="${job.title}">Job Title</h2>
+        <div class="company" th:text="${job.company}">Company</div>
+        <div class="location">📍 <span th:text="${job.location}">Location</span></div>
+    </div>
+
+    <div class="cover-letter-box">
+        <h3>✨ AI Generated Cover Letter</h3>
+        <div class="cover-letter-text" th:text="${coverLetter}">Cover letter will appear here...</div>
+
+        <div class="actions">
+            <a href="/" class="btn btn-back">← Back to Jobs</a>
+            <button class="btn btn-copy" onclick="copyLetter()">📋 Copy Letter</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function copyLetter() {
+        const text = document.querySelector('.cover-letter-text').innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            alert('Cover letter copied!');
+        });
+    }
+</script>
+
+</body>
+</html>

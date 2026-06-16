@@ -35,12 +35,24 @@ public class ScraperService {
     public void scrapeJobs() {
         log.info("Starting job scraping...");
         List<Job> jobs = fetchFromAdzuna("java developer", "in");
+        jobs.addAll(fetchFromAdzuna("java developer", "in"));
+        jobs.addAll(fetchFromAdzuna("python developer", "in"));
+        jobs.addAll(fetchFromAdzuna("frontend developer", "in"));
+        jobs.addAll(fetchFromAdzuna("data engineer", "in"));
+        jobs.addAll(fetchFromAdzuna("devops engineer", "in"));
+        jobs.addAll(fetchFromAdzuna("full stack developer", "in"));
         jobs.forEach(jobService::saveJob);
         log.info("Scraping complete. Saved {} jobs.", jobs.size());
     }
 
     public List<Job> scrapeNow() {
         List<Job> jobs = fetchFromAdzuna("java developer", "in");
+        jobs.addAll(fetchFromAdzuna("java developer", "in"));
+        jobs.addAll(fetchFromAdzuna("python developer", "in"));
+        jobs.addAll(fetchFromAdzuna("frontend developer", "in"));
+        jobs.addAll(fetchFromAdzuna("data engineer", "in"));
+        jobs.addAll(fetchFromAdzuna("devops engineer", "in"));
+        jobs.addAll(fetchFromAdzuna("full stack developer", "in"));
         jobs.forEach(jobService::saveJob);
         return jobs;
     }
