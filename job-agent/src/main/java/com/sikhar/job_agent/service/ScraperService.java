@@ -41,8 +41,14 @@ public class ScraperService {
         jobs.addAll(fetchFromAdzuna("data engineer", "in"));
         jobs.addAll(fetchFromAdzuna("devops engineer", "in"));
         jobs.addAll(fetchFromAdzuna("full stack developer", "in"));
-        jobs.forEach(jobService::saveJob);
-        log.info("Scraping complete. Saved {} jobs.", jobs.size());
+        int savedCount = 0;
+        for (Job job : jobs) {
+            Job saved = jobService.saveJob(job);
+            if (saved != null) {
+                savedCount++;
+            }
+        }
+        log.info("Scraping complete. Saved {} new jobs (skipped duplicates).", savedCount);
     }
 
     public List<Job> scrapeNow() {

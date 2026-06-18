@@ -16,6 +16,10 @@ public class JobService {
     private final JobRepository jobRepository;
 
     public Job saveJob(Job job) {
+        boolean exists = jobRepository.existsByTitleAndCompany(job.getTitle(), job.getCompany());
+        if (exists) {
+            return null;
+        }
         job.setCreatedAt(LocalDateTime.now());
         return jobRepository.save(job);
     }
