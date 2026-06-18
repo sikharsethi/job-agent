@@ -74,6 +74,7 @@
             <div class="desc" th:text="${job.description}">Description</div>
             <form th:action="@{/cover-letter/{id}(id=${job.id})}" method="post">
                 <a th:href="@{/cover-letter/{id}(id=${job.id})}" class="btn-cover">✨ Generate Cover Letter</a>
+                <a th:href="${job.url}" target="_blank" class="btn-cover">🔗 View & Apply</a>
             </form>
         </div>
     </div>
