@@ -108,7 +108,11 @@ http://localhost:8080
 
 ## 📸 Screenshots
 
-> Dashboard showing real-time job listings with AI cover letter generation
+### Dashboard
+![Dashboard](screenshots/dashboard.png)
+
+### AI-Generated Cover Letter
+![Cover Letter](screenshots/cover-letter.png)
 
 ## 🤝 Author
 
