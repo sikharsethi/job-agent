@@ -1,4 +1,7 @@
 # 🤖 AI Job Agent
+# 🤖 AI Job Agent
+
+🔗 **Live Demo:** [https://job-agent-9qhd.onrender.com](https://job-agent-9qhd.onrender.com)
 
 An autonomous AI-powered job application agent built with Java and Spring Boot that automatically scrapes job listings, stores them in a database, and generates personalized cover letters using LLM.
 
@@ -59,6 +62,18 @@ docker-compose up -d
 
 http://localhost:8080
 
+## 🧪 Testing
+
+Unit tests written using JUnit 5 and Mockito to verify core business logic.
+
+```bash
+mvn test
+```
+
+**Coverage includes:**
+- Duplicate job detection (prevents same job from being saved twice based on title + company)
+- Successful persistence of new, unique job entries
+
 ## 🔌 API Endpoints
 
 | Method | Endpoint | Description |
@@ -108,7 +123,11 @@ http://localhost:8080
 
 ## 📸 Screenshots
 
-> Dashboard showing real-time job listings with AI cover letter generation
+### Dashboard
+![Dashboard](screenshots/dashboard.png)
+
+### AI-Generated Cover Letter
+![Cover Letter](screenshots/cover-letter.png)
 
 ## 🤝 Author
 
