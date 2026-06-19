@@ -1,6 +1,6 @@
 # 🤖 AI Job Agent
 
- Live Demo: https://job-agent-9qhd.onrender.com
+**Live Demo:** [https://job-agent-9qhd.onrender.com](https://job-agent-9qhd.onrender.com)
 
 An autonomous AI-powered job application agent built with Java and Spring Boot that automatically scrapes job listings, stores them in a database, and generates personalized cover letters using LLM.
 
