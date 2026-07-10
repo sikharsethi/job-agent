@@ -1,4 +1,4 @@
-HELP.md
+job-agent/HELP.md
 job-agent/target/
 **/target/
 .mvn/wrapper/maven-wrapper.jar
