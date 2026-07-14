@@ -25,7 +25,9 @@ public class JobService {
     }
 
     public List<Job> getAllJobs() {
-        return jobRepository.findAll();
+        // show only last 7 days jobs
+        LocalDateTime sevenDaysAgo = LocalDateTime.now().minusDays(7);
+        return jobRepository.findRecentJobs(sevenDaysAgo);
     }
     public Optional<Job> getJobById(Long id) {
         return jobRepository.findById(id);
