@@ -66,16 +66,23 @@
     </div>
 
     <div class="jobs-grid">
-        <div class="job-card" th:each="job : ${jobs}">
-            <span class="badge" th:text="${job.status}">NEW</span>
-            <h3 th:text="${job.title}">Job Title</h3>
-            <div class="company" th:text="${job.company}">Company</div>
-            <div class="location">📍 <span th:text="${job.location}">Location</span></div>
-            <div class="desc" th:text="${job.description}" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; height: 4.5em;">Description</div>
-            <form th:action="@{/cover-letter/{id}(id=${job.id})}" method="post">
-                <a th:href="@{/cover-letter/{id}(id=${job.id})}" class="btn-cover" style="text-decoration: none;">✨ Generate Cover Letter</a>
-                <a th:href="${job.url}" target="_blank" class="btn-cover" style="text-decoration: none;">View & Apply</a>
+        <div class="job-card" th:each="job : ${jobs}" style="display: flex; flex-direction: column; height: 100%; box-sizing: border-box; padding: 20px;">
+            <!-- Content Section -->
+            <div style="flex-grow: 1; margin-bottom: 20px;">
+                <span class="badge" th:text="${job.status}">NEW</span>
+                <h3 th:text="${job.title}" style="margin: 10px 0 5px 0;">Job Title</h3>
+                <div class="company" th:text="${job.company}" style="margin-bottom: 5px;">Company</div>
+                <div class="location" style="margin-bottom: 10px;">📍 <span th:text="${job.location}">Location</span></div>
+                <div class="desc" th:text="${job.description}" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; color: #555; line-height: 1.4;">Description</div>
+            </div>
+
+            <!-- Buttons Section: Isse dono buttons hamesha bottom par rahenge aur equal width ke honge -->
+            <form th:action="@{/cover-letter/{id}(id=${job.id})}" method="post" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; margin-top: auto;">
+                <a th:href="@{/cover-letter/{id}(id=${job.id})}" class="btn-cover" style="text-decoration: none; text-align: center; display: flex; align-items: center; justify-content: center; padding: 10px 5px; font-size: 14px; white-space: nowrap;">✨ Generate Cover Letter</a>
+                <a th:href="${job.url}" target="_blank" class="btn-cover" style="text-decoration: none; text-align: center; display: flex; align-items: center; justify-content: center; padding: 10px 5px; font-size: 14px;">View & Apply</a>
             </form>
+        </div>
+        </div>
         </div>
     </div>
 </div>
