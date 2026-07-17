@@ -123,11 +123,11 @@ mvn test
 
 ## 📸 Screenshots
 
-### Dashboard
-![Dashboard]()
+### 🖥️ Dashboard
+![Dashboard](screenshots/dashboard.png)
 
-### AI-Generated Cover Letter
-![Cover Letter](![cover-letter.png](../screenshots/cover-letter.png)screenshots/cover-letter.png)
+### 📄 AI-Generated Cover Letter
+![Cover Letter](screenshots/cover-letter.png)
 
 ## 🤝 Author
 
