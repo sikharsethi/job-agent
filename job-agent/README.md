@@ -124,10 +124,10 @@ mvn test
 ## 📸 Screenshots
 
 ### Dashboard
-![Dashboard](screenshots/dashboard.png)
+![Dashboard]()
 
 ### AI-Generated Cover Letter
-![Cover Letter](screenshots/cover-letter.png)
+![Cover Letter](![cover-letter.png](../screenshots/cover-letter.png)screenshots/cover-letter.png)
 
 ## 🤝 Author
 

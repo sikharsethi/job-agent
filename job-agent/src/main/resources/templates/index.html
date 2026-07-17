@@ -71,7 +71,7 @@
             <h3 th:text="${job.title}">Job Title</h3>
             <div class="company" th:text="${job.company}">Company</div>
             <div class="location">📍 <span th:text="${job.location}">Location</span></div>
-            <div class="desc" th:text="${job.description}">Description</div>
+            <div class="desc" th:text="${job.description}" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; height: 4.5em;">Description</div>
             <form th:action="@{/cover-letter/{id}(id=${job.id})}" method="post">
                 <a th:href="@{/cover-letter/{id}(id=${job.id})}" class="btn-cover" style="text-decoration: none;">✨ Generate Cover Letter</a>
                 <a th:href="${job.url}" target="_blank" class="btn-cover" style="text-decoration: none;">View & Apply</a>
